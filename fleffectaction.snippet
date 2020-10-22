@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Fluxor Action (With Effects)</Title>
+            <Author>Stephen Tsimidis</Author>
+            <Description>
+                Generate a complete standalone Fluxor action with side effects. This snippet creates the action, reducer, effect class, and success/failed result actions.
+                
+                If you want a slightly cleaner separation of concerns, you can have Visual Studio move the Success and Failed classes into their own file afterwards.
+            </Description>
+            <Shortcut>fleffectaction</Shortcut>
+        </Header>
+        <Snippet>
+            <Imports>
+                <Import>
+                    <Namespace>
+                        System
+                    </Namespace>
+                </Import>
+                <Import>
+                    <Namespace>
+                        System.Threading.Tasks
+                    </Namespace>
+                </Import>
+                <Import>
+                    <Namespace>
+                        Fluxor
+                    </Namespace>
+                </Import>
+                <Import>
+                    <Namespace>
+                        Microsoft.Extensions.Logging
+                    </Namespace>
+                </Import>
+            </Imports>
+            <Code Language="CSharp">
+                <![CDATA[
+                    // Use Rename Refactor to set the names you want, then delete this class.
+                    class TState$end$ { }
+
+                    public class Action
+                    {
+                        public Action()
+                        {
+
+                        }
+                    }
+
+                    [ReducerMethod]
+                    public static TState Reduce(TState state, Action action)
+                    {
+                        throw new NotImplementedException();
+                    }
+
+                    public class Effect
+                    {
+                        private readonly ILogger<Effect> logger;
+                        private readonly IState<TState> state;
+                        public Effect(ILogger<Effect> logger, IState<TState> state)
+                        {
+                            this.logger = logger;
+                            this.state = state;
+                        }
+
+                        [EffectMethod]
+                        public async Task HandleAsync(Action action, IDispatcher dispatcher)
+                        {
+                            try
+                            {
+                                throw new NotImplementedException();
+                                dispatcher.Dispatch(new Success.Action());
+                            }
+                            catch (Exception ex)
+                            {
+                                logger.LogError(ex, "An error occurred handling the action");
+                                dispatcher.Dispatch(new Failed.Action("Action failed"));
+                            }
+                        }
+                    }
+
+                    public static class Success
+                    {
+                        public class Action
+                        {
+                            public Action()
+                            {
+                            }
+                        }
+
+                        [ReducerMethod]
+                        public static TState Reduce(TState state, Action action)
+                        {
+                            throw new NotImplementedException();
+                        }
+                    }
+
+                    public static class Failed
+                    {
+                        public class Action
+                        {
+                            public Action(string errorMessage)
+                            {
+                                ErrorMessage = errorMessage;
+                            }
+
+                            public string ErrorMessage { get; }
+                        }
+
+                        [ReducerMethod]
+                        public static TState Reduce(TState state, Action action)
+                        {
+                            throw new NotImplementedException();
+                        }
+                    }
+                ]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
