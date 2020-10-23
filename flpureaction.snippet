@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Fluxor Action (Pure)</Title>
+            <Author>Stephen Tsimidis</Author>
+            <Description>
+                Generate a Fluxor action with a pure reducer.
+            </Description>
+            <Shortcut>flpureaction</Shortcut>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Imports>
+                <Import>
+                    <Namespace>
+                        System
+                    </Namespace>
+                </Import>
+                <Import>
+                    <Namespace>
+                        System.Threading.Tasks
+                    </Namespace>
+                </Import>
+                <Import>
+                    <Namespace>
+                        Fluxor
+                    </Namespace>
+                </Import>
+                <Import>
+                    <Namespace>
+                        Microsoft.Extensions.Logging
+                    </Namespace>
+                </Import>
+            </Imports>
+            <Code Language="CSharp">
+                <![CDATA[class TState$end$ { } // Use Rename Refactor to set the names you want, then delete this class.
+
+                    public class Action
+                    {
+                        public Action()
+                        {
+
+                        }
+                    }
+
+                    [ReducerMethod]
+                    public static TState Reduce(TState state, Action action)
+                    {
+                        throw new NotImplementedException();
+                    }
+                ]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

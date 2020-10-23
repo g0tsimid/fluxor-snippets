@@ -10,6 +10,9 @@
                 If you want a slightly cleaner separation of concerns, you can have Visual Studio move the Success and Failed classes into their own file afterwards.
             </Description>
             <Shortcut>fleffectaction</Shortcut>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
         </Header>
         <Snippet>
             <Imports>
@@ -35,9 +38,7 @@
                 </Import>
             </Imports>
             <Code Language="CSharp">
-                <![CDATA[
-                    // Use Rename Refactor to set the names you want, then delete this class.
-                    class TState$end$ { }
+                <![CDATA[class TState$end$ { } // Use Rename Refactor to set the names you want, then delete this class.
 
                     public class Action
                     {
