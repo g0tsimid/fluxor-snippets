@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Fluxor Reducer Method</Title>
+            <Author>Stephen Tsimidis</Author>
+            <Description>
+                Generate a static Fluxor Reduce method with a signature supported by the [ReducerMethod] attribute.
+            </Description>
+            <Shortcut>flreduce</Shortcut>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>StateClass</ID>
+                    <ToolTip>Enter the State class name</ToolTip>
+                    <Default>State</Default>
+                </Literal>
+            </Declarations>
+            <Imports>
+                <Import>
+                    <Namespace>
+                        Fluxor
+                    </Namespace>
+                </Import>
+            </Imports>
+            <Code Language="CSharp">
+                <![CDATA[[ReducerMethod]
+                    public static $StateClass$ Reduce($StateClass$ state, Action action)
+                    {
+                        throw new NotImplementedException();
+                    }
+                ]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Fluxor Effect Method</Title>
+            <Author>Stephen Tsimidis</Author>
+            <Description>
+                Generate a static Fluxor HandleAsync method with a signature supported by the [EffectMethod] attribute.
+            </Description>
+            <Shortcut>flhandle</Shortcut>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Imports>
+                <Import>
+                    <Namespace>
+                        Fluxor
+                    </Namespace>
+                </Import>
+            </Imports>
+            <Code Language="CSharp">
+                <![CDATA[[EffectMethod]
+                    public async Task HandleAsync(Action action, IDispatcher dispatcher)
+                    {
+                        throw new NotImplementedException();
+                    }
+                ]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
