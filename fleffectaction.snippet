@@ -15,6 +15,13 @@
             </SnippetTypes>
         </Header>
         <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>StateClass</ID>
+                    <ToolTip>Enter the State class name</ToolTip>
+                    <Default>State</Default>
+                </Literal>
+            </Declarations>
             <Imports>
                 <Import>
                     <Namespace>
@@ -38,9 +45,7 @@
                 </Import>
             </Imports>
             <Code Language="CSharp">
-                <![CDATA[class TState$end$ { } // Use Rename Refactor to set the names you want, then delete this class.
-
-                    public class Action
+                <![CDATA[public class Action
                     {
                         public Action()
                         {
@@ -49,7 +54,7 @@
                     }
 
                     [ReducerMethod]
-                    public static TState Reduce(TState state, Action action)
+                    public static $StateClass$ Reduce($StateClass$ state, Action action)
                     {
                         throw new NotImplementedException();
                     }
@@ -90,7 +95,7 @@
                         }
 
                         [ReducerMethod]
-                        public static TState Reduce(TState state, Action action)
+                        public static $StateClass$ Reduce($StateClass$ state, Action action)
                         {
                             throw new NotImplementedException();
                         }
@@ -109,7 +114,7 @@
                         }
 
                         [ReducerMethod]
-                        public static TState Reduce(TState state, Action action)
+                        public static $StateClass$ Reduce($StateClass$ state, Action action)
                         {
                             throw new NotImplementedException();
                         }

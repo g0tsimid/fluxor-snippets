@@ -2,6 +2,15 @@
 
 To install, clone this repo and add the folder to your Code Snippets Manager in Visual Studio.
 
+- [Fluxor snippets for development in Visual Studio](#fluxor-snippets-for-development-in-visual-studio)
+  - [Explanation](#explanation)
+    - [fleffectaction](#fleffectaction)
+    - [flpureaction](#flpureaction)
+    - [flreduce](#flreduce)
+    - [flhandle](#flhandle)
+  - [Additional Advice](#additional-advice)
+  - [Simple example](#simple-example)
+
 ## Explanation
 
 These snippets are intended to encourage a cohesive structure for actions within a Fluxor store: a single file containing the action, reduce method, and effect handler all in the same place. The `Action` gets sent to the dispatcher and the `Reduce` method performs the immediate state update logic. Meanwhile the `Effect.HandleAsync` method takes care of running the asynchronous logic and dispatches either a `Success.Action` or a `Failed.Action` to indicate the result.
@@ -10,7 +19,7 @@ These snippets are intended to encourage a cohesive structure for actions within
 
 The fleffectaction generates the boilerplate required to implement an asynchronous workflow (eg, an API call). It's meant to be inserted within a static class named after your action. For best results, follow these steps:
 
-1. Immediately perform a Rename Refactor to rename `TState` to the name of your externally defined state class. This updates the TState type parameter throughout the generated code. Afterwards, you can delete the empty `class TState { }` line at the start of the snippet. The only reason this step is here is because VS 2019 doesn't seem to support placing multiple cursors on the file after inserting the snippet.
+1. Type in the State Class that will be returned by your reducer and press Enter to replace the literal throughout the snippet.
 2. Add any properties to your action that you need to send in order to update state or in order to perform the async logic.
 3. Implement the Reduce method to synchronously update your local state based on the Action.
 4. Define the return values from your async logic on the `Success.Action` class (eg, data returned from an API).
@@ -19,6 +28,14 @@ The fleffectaction generates the boilerplate required to implement an asynchrono
 ### flpureaction
 
 This snippet is used for actions that can be handled synchronously on the client and do not have any side effects. As a result, the snippet will only insert the `Action` class and the `Reduce` method, without the extra `Effect`, `Success`, or `Failed` classes. Otherwise, implementing the workflow is identical to implementing the full async workflow above.
+
+### flreduce
+
+flreduce is used just to generate a static method with the `[ReducerMethod]` attribute. Useful for situations where you are adding multiple reducers to an existing file.
+
+### flhandle
+
+flhandle generates just a static HandleAsync method with the `[EffectMethod]` attribute. Useful for adding effect methods to the generated Success or Failed actions, where required.
 
 ## Additional Advice
 **Important**: It's highly recommended that you manually log and handle all exceptions within any effect methods that you write. This is to avoid having the error completely crash the page, and also to make sure you are collecting accurate stack trace information.  
