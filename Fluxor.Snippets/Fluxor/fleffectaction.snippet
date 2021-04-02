@@ -62,8 +62,8 @@
                     public class Effect
                     {
                         private readonly ILogger<Effect> logger;
-                        private readonly IState<TState> state;
-                        public Effect(ILogger<Effect> logger, IState<TState> state)
+                        private readonly IState<$StateClass$> state;
+                        public Effect(ILogger<Effect> logger, IState<$StateClass$> state)
                         {
                             this.logger = logger;
                             this.state = state;
